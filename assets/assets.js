@@ -83,32 +83,60 @@ export const workData = [
         bgImage: '/work-1.png',
     },
     {
-        title: 'Geo based app',
-        description: 'Mobile App',
+        title: 'Food websites',
+        description: 'Restrurant Ordering Site',
         bgImage: '/work-2.png',
     },
     {
-        title: 'Photography site',
-        description: 'Web Design',
+        title: 'E-Commerce site',
+        description: 'Responsive design',
         bgImage: '/work-3.png',
     },
     {
-        title: 'UI/UX designing',
-        description: 'UI/UX Design',
+        title: 'Blogs Site',
+        description: 'Article Uploading',
         bgImage: '/work-4.png',
     },
 ]
 
 export const serviceData = [
-    { icon: assets.web_icon, title: 'Web design', description: 'Web development is the process of building, programming...', link: '' },
-    { icon: assets.mobile_icon, title: 'Mobile app', description: 'Mobile app development involves creating software for mobile devices...', link: '' },
-    { icon: assets.ui_icon, title: 'UI/UX design', description: 'UI/UX design focuses on creating a seamless user experience...', link: '' },
-    { icon: assets.graphics_icon, title: 'Graphics design', description: 'Creative design solutions to enhance visual communication...', link: '' },
+        {
+          icon: assets.web_icon,
+          title: 'Web Development',
+          description: 'Developing modern and scalable web applications using HTML, CSS, JavaScript, React.js, Next.js, Node.js, Express, and MongoDB. Ensuring responsive and high-performance solutions.',
+          link: ''
+        },
+        {
+          icon: assets.frontend_icon,
+          title: 'Frontend Development',
+          description: 'Building interactive and user-friendly interfaces with HTML, CSS, JavaScript, React.js, and Next.js while ensuring responsiveness and performance.',
+          link: ''
+        },
+        {
+          icon: assets.backend_icon,
+          title: 'Backend Development',
+          description: 'Creating secure and efficient server-side applications using Node.js, Express.js, and MongoDB, ensuring seamless API and database integration.',
+          link: ''
+        },
+        {
+          icon: assets.marketing_icon,
+          title: 'Marketing',
+          description: 'Developing effective digital marketing strategies including SEO, social media campaigns, content marketing, and email marketing to increase brand visibility and engagement.',
+          link: ''
+        },
+        {
+          icon: assets.freelancing_icon,
+          title: 'Freelancing',
+          description: 'Providing freelance services in web development, design, and digital marketing. Helping clients with project-based solutions and long-term collaborations.',
+          link: ''
+        }
+      
+      
 ]
 
 export const infoList = [
-    { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Languages', description: 'HTML, CSS, JavaScript React Js, Next Js' },
-    { icon: assets.edu_icon, iconDark: assets.edu_icon_dark, title: 'Education', description: 'B.Tech in Computer Science' },
+    { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Languages', description: 'HTML, CSS, JavaScript, Node JS ,MongoDB, Express React Js, Next Js' },
+    { icon: assets.edu_icon, iconDark: assets.edu_icon_dark, title: 'Education', description: 'BS in Computer Science   Web Development ,     Web Designing' },
     { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: 'Built more than 5 projects' }
 ];
 

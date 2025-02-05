@@ -43,8 +43,8 @@ const About = ({isdarkMode}) => {
          className='flex-1'>
             <p className='mb-10 max-w-2xl font-Ovo'>
                 I am a software engineer with a passion for building scalable and efficient systems. I have experience working
-                with a variety of programming languages and technologies, including Java, Python, and javascript.
-                with experties in backend developers, in which i expret at node ja mongo Db 
+                with a variety of programming languages and technologies, including  and javascript, React JS,
+                with experties in backend developers, in which i expret at MondoDb, Node Js , Next JS 
                 and have these solutions
             </p>
             <motion.ul
