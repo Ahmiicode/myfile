@@ -77,62 +77,57 @@ export const assets = {
 };
 
 export const workData = [
-    {
-        title: 'Frontend project',
-        description: 'Web Design',
-        bgImage: '/work-1.png',
-    },
-    {
-        title: 'Food websites',
-        description: 'Restrurant Ordering Site',
-        bgImage: '/work-2.png',
-    },
-    {
-        title: 'E-Commerce site',
-        description: 'Responsive design',
-        bgImage: '/work-3.png',
-    },
-    {
-        title: 'Blogs Site',
-        description: 'Article Uploading',
-        bgImage: '/work-4.png',
-    },
-]
+ {
+  title: 'Madicate Frontend project',
+  description: 'Healthcare landing page for a modern medical tech brand, built with responsive design and sleek UI components.',
+  bgImage: '/work-1.png',
+  liveSite: 'https://medicate-pearl.vercel.app/',
+}
+,
+  {
+  title: 'Astroship — Location-Based React App',
+  description: 'Multi-page React application delivering geo-targeted features with responsive design and seamless navigation.',
+  bgImage: '/work-2.png',
+  liveSite: 'https://astroship-beta-gilt.vercel.app/',
+}
+,
+{
+  title: 'Grill Yard — Restaurant Website',
+  description: 'A modern, visually appetizing website for a grill restaurant, featuring an interactive menu, responsive layout, and smooth navigation.',
+  bgImage: '/work-3.png',
+  liveSite: 'https://grill-yard.vercel.app/',
+}
+,
+{
+  title: 'Forever — E-commerce UI/UX Design',
+  description: 'A stylish e-commerce interface focused on user experience, showcasing modern UI design for seamless product browsing and checkout.',
+  bgImage: '/work-4.png',
+  liveSite: 'https://inspiring-churros-ab3001.netlify.app/',
+}
+,
+ {
+  title: 'WP-Plumb — Plumbing Services Website',
+  description: 'Multi-page website for a plumbing business, featuring service listings, contact forms, and a clean, professional layout.',
+  bgImage: '/work-5.png',
+  liveSite: 'https://bucolic-kelpie-66b35c.netlify.app/',
+}
+,
+{
+  title: 'RealEstateHub — Property Booking Platform',
+  description: 'A sleek real estate booking website designed for showcasing properties, with intuitive navigation, filtering, and modern UI components.',
+  bgImage: '/work-6.png',
+  liveSite: 'https://zesty-madeleine-367342.netlify.app/',
+},
+];
 
 export const serviceData = [
-        {
-          icon: assets.web_icon,
-          title: 'Web Development',
-          description: 'Developing modern and scalable web applications using HTML, CSS, JavaScript, React.js, Next.js, Node.js, Express, and MongoDB. Ensuring responsive and high-performance solutions.',
-          link: ''
-        },
-        {
-          icon: assets.frontend_icon,
-          title: 'Frontend Development',
-          description: 'Building interactive and user-friendly interfaces with HTML, CSS, JavaScript, React.js, and Next.js while ensuring responsiveness and performance.',
-          link: ''
-        },
-        {
-          icon: assets.backend_icon,
-          title: 'Backend Development',
-          description: 'Creating secure and efficient server-side applications using Node.js, Express.js, and MongoDB, ensuring seamless API and database integration.',
-          link: ''
-        },
-        {
-          icon: assets.marketing_icon,
-          title: 'Marketing',
-          description: 'Developing effective digital marketing strategies including SEO, social media campaigns, content marketing, and email marketing to increase brand visibility and engagement.',
-          link: ''
-        },
-        {
-          icon: assets.freelancing_icon,
-          title: 'Freelancing',
-          description: 'Providing freelance services in web development, design, and digital marketing. Helping clients with project-based solutions and long-term collaborations.',
-          link: ''
-        }
-      
-      
-]
+  { icon: assets.web_icon, title: 'MERN Stack Development', description: 'Building full-stack applications using MongoDB, Express, React, and Node.js.', link: '' },
+  { icon: assets.nextjs_icon, title: 'Next.js Development', description: 'Creating SEO-friendly and performant React applications with Next.js.', link: '' },
+  { icon: assets.wp_icon, title: 'WordPress API Integration', description: 'Integrating and managing WordPress REST APIs for dynamic content.', link: '' },
+  { icon: assets.figma_icon, title: 'Figma to React.js', description: 'Converting Figma UI/UX designs into clean, reusable React.js components.', link: '' },
+  { icon: assets.ui_icon, title: 'UI/UX Design', description: 'Designing seamless user experiences and interfaces.', link: '' },
+];
+
 
 export const infoList = [
     { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Languages', description: 'HTML, CSS, JavaScript, Node JS ,MongoDB, Express React Js, Next Js' },
