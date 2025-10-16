@@ -124,12 +124,6 @@ export const workData = [
   bgImage: '/work-7.png',
   liveSite: 'https://salaaddd.vercel.app/',
 },
-{
-  title: 'RealEstateHub — Property Booking Platform',
-  description: 'A sleek real estate booking website designed for showcasing properties, with intuitive navigation, filtering, and modern UI components.',
-  bgImage: '/work-8.png',
-  liveSite: 'https://estate-qkvg.vercel.app/',
-},
 
 ];
 
