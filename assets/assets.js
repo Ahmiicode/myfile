@@ -118,6 +118,13 @@ export const workData = [
   bgImage: '/work-6.png',
   liveSite: 'https://zesty-madeleine-367342.netlify.app/',
 },
+{
+  title: 'Salad — Modern Real Estate Platform',
+  description: 'A fresh, minimalist real estate platform designed for effortless property discovery and booking. Built with a clean UI, smooth navigation, and responsive design to deliver a seamless user experience.',
+  bgImage: '/work-7.png',
+  liveSite: 'https://salaaddd.vercel.app/',
+},
+
 ];
 
 export const serviceData = [

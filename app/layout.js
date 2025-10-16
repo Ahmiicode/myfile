@@ -13,8 +13,12 @@ const ovo =Ovo({
 
 
 export const metadata = {
-  title: "Ahmad Portfolio",
-  description: "",
+  title: 'Ahmad Naeem',
+  icons: {
+    icon: '/favicon-52x52.png',
+    shortcut: '/favicon-55x55.png',
+    apple: '/apple-touch-icon.png',
+  },
 };
 
 export default function RootLayout({ children }) {
