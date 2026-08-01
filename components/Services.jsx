@@ -1,55 +1,82 @@
-import React from 'react'
-import Image from 'next/image'
-import { assets, serviceData } from '@/assets/assets'
-import {motion} from "motion/react"
+import React from "react";
+import Image from "next/image";
+import { assets, serviceData } from "@/assets/assets";
+import { motion } from "framer-motion";
 
 const Services = () => {
   return (
-    <motion.div
-    initial={{ opacity: 0 }}
-    whileInView={{ opacity: 1 }}
-    transition={{duration:1}}
-     id='services' className='w-full px-[12%] py-10 scroll-mt-20'>
-      <motion.h4 
-       initial={{opacity:0,y:-20}}
-       whileInView={{opacity:1,y:0}}
-       transition={{duration:0.5, delay:0.3}}
-      className='text-center mb-2 text-lg font-Ovo' >What I offer</motion.h4>
-      <motion.h2
-      initial={{opacity:0,y:-20}}
-      whileInView={{opacity:1,y:0}}
-      transition={{duration:0.5, delay:0.5}}
-       className='text-center text-5xl font-Ovo'>My Services</motion.h2>
-      <motion.p
-      initial={{opacity:0}}
-      whileInView={{opacity:1}}
-      transition={{duration:0.5, delay:0.7}}
-       className='text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo'>
-        I offer a variety of services, including web development, graphic design, and digital marketing
-         and i have experinse of multiple companies like microsoft ,Tesla and Apple
-      </motion.p>
+    <section
+      id="services"
+      className="w-full bg-[#0b0f19] text-white py-28 px-6 md:px-[12%] relative overflow-hidden"
+    >
 
-      <motion.div
-      initial={{opacity:0}}
-      whileInView={{opacity:1}}
-      transition={{duration:0.5, delay:0.9}}
-       className='grid grid-cols-auto-fit  gap-6 my-10'>
-        {serviceData.map(({icon,title,description,link },index)=>(
-            <motion.div
-            whileHover={{scale:1.05}}
-             key={index} className='border  border-gray-400 rounded-lg px-8 py-12 hover:shadow-black cursor-pointer hover:bg-lightHover hover:-translate-y-1 duration-500
-            dark:hover:bg-darkHover dark:hover:shadow-white'>
-                <Image src={icon} alt='' className='w-10'/>
-                <h3 className='text-lg my-4 text-gray-700 dark:text-white '>{title}</h3>
-                <p className='text-sm text-gray-600 leading-5 dark:text-white/80'>{description}</p>
-                <a href={link} className='flex items-center gap-2 text-sm mt-5'>
-                    Read more <Image src={assets.right_arrow} className='w-4'/>
-                </a>
-                                </motion.div>
+      {/* background glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#1e3a8a33,transparent_60%)]" />
+
+      {/* HEADER */}
+      <div className="text-center max-w-2xl mx-auto">
+
+        <p className="text-blue-400 tracking-[0.3em] uppercase text-xs">
+          What I Do
+        </p>
+
+        <h2 className="text-4xl md:text-6xl font-bold mt-4">
+          Services I Deliver
+        </h2>
+
+        <p className="text-gray-400 mt-5 text-sm md:text-base">
+          Clean, fast and scalable digital solutions built like production-grade systems.
+        </p>
+
+      </div>
+
+      {/* UNIQUE TIMELINE STYLE */}
+      <div className="mt-20 max-w-4xl mx-auto relative">
+
+        {/* vertical line */}
+        <div className="absolute left-4 top-0 bottom-0 w-[2px] bg-white/10" />
+
+        {serviceData.map((item, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: i * 0.1 }}
+            className="relative flex items-start gap-6 mb-10"
+          >
+
+            {/* DOT */}
+            <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center z-10">
+              <Image src={item.icon} className="w-4" />
+            </div>
+
+            {/* CONTENT */}
+            <div className="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 w-full hover:border-blue-500/40 transition">
+
+              <h3 className="text-lg font-semibold mb-2">
+                {item.title}
+              </h3>
+
+              <p className="text-sm text-gray-400 leading-relaxed">
+                {item.description}
+              </p>
+
+              <a
+                href={item.link}
+                className="inline-flex items-center gap-2 text-sm mt-4 text-blue-400 hover:text-blue-300 transition"
+              >
+                Open Service
+                <Image src={assets.right_arrow} className="w-4" />
+              </a>
+
+            </div>
+
+          </motion.div>
         ))}
-      </motion.div>
-    </motion.div>
-  )
-}
 
-export default Services
+      </div>
+    </section>
+  );
+};
+
+export default Services;

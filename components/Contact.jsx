@@ -1,98 +1,467 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import { assets } from '@/assets/assets'
-import React, {useState} from 'react'
-import {motion} from "motion/react"
+import Image from "next/image";
+import { assets } from "@/assets/assets";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+
 
 const Contact = () => {
-    const [result, setResult] = useState("");
 
-  const onSubmit = async (event) => {
+  const [result,setResult] = useState("");
+
+
+
+  const onSubmit = async(event)=>{
+
     event.preventDefault();
-    setResult("Sending....");
+
+    setResult("Sending...");
+
+
     const formData = new FormData(event.target);
 
-    formData.append("access_key", "62cc866d-0c97-4530-8383-4a3b40aaff56");
+    formData.append(
+      "access_key",
+      "62cc866d-0c97-4530-8383-4a3b40aaff56"
+    );
 
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData
-    });
+
+
+    const response = await fetch(
+      "https://api.web3forms.com/submit",
+      {
+        method:"POST",
+        body:formData
+      }
+    );
+
 
     const data = await response.json();
 
-    if (data.success) {
-      setResult("Form Submitted Successfully");
+
+
+    if(data.success){
+
+      setResult(
+        "Message sent successfully 🚀"
+      );
+
       event.target.reset();
-    } else {
-      console.log("Error", data);
-      setResult(data.message);
+
     }
+
+    else{
+
+      setResult(
+        "Something went wrong"
+      );
+
+    }
+
   };
+
+
+
+
   return (
-    <motion.div
-    initial={{ opacity: 0 }}
-    whileInView={{opacity:1}}
-    transition={{duration:1}}
-    id="contact"
-    className="w-full px-[12%] py-10 scroll-mt-20  dark:bg-none
-    bg-[url('/footer-bg-color.png')] bg-no-repeat bg-center bg-[length:90%_auto]"
-  >
-    <motion.h4
-    initial={{ opacity: 0 ,y:-20 }}
-    whileInView={{opacity:1,y:0}}
-    transition={{duration:0.5, delay:0.3}}
-    className="text-center mb-2 text-lg font-Ovo">Connect with me</motion.h4>
-    <motion.h2
-      initial={{ opacity: 0 ,y:-20 }}
-      whileInView={{opacity:1,y:0}}
-      transition={{duration:0.5, delay:0.3}}
-     className="text-center text-5xl font-Ovo">Get in touch</motion.h2>
-    <motion.p
-      initial={{ opacity: 0  }}
-      whileInView={{opacity:1}}
-      transition={{duration:0.5, delay:0.7}}
-     className="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo">
-      I offer a variety of services, including web development, graphic design, and digital marketing. 
-      I have experience working with multiple companies like Microsoft, Tesla, and Apple.
-    </motion.p>
-    <motion.form
-      initial={{ opacity: 0  }}
-      whileInView={{opacity:1,y:0}}
-      transition={{duration:0.5, delay:0.3}}
-     onSubmit={onSubmit} className='max-w-2xl mx-auto'>
-        <div className='grid grid-cols-auto-fit gap-6 mt-10 mb-8'>
-            <motion.input
-              initial={{ opacity: 0 ,x:-50 }}
-              whileInView={{opacity:1,x:0}}
-              transition={{duration:0.6, delay:1.1}}
-             type="text"  placeholder='Enter your name' required name='name'
-            className='flex-1 p-3 outline-none dark:bg-darkHover/30 dark:border-white/90  border-[0.5px] border-gray-400 rounded-md bg-white' />
-            <motion.input
-             initial={{ opacity: 0 ,x:-50 }}
-             whileInView={{opacity:1,x:0}}
-             transition={{duration:0.6, delay:1.2}}
-             type="email" placeholder='Enter your email' required name='email'
-            className='flex-1 p-3 outline-none  dark:bg-darkHover/30 dark:border-white/90  border-[0.5px] border-gray-400 rounded-md bg-white' />
+
+    <section
+
+      id="contact"
+
+      className="
+      relative overflow-hidden
+      bg-[#050816]
+      px-6 py-28
+      text-white
+      scroll-mt-20
+      md:px-[10%]
+      "
+
+    >
+
+
+
+      {/* Glow */}
+
+      <div className="
+      absolute left-1/2 top-0
+      h-[500px] w-[500px]
+      -translate-x-1/2
+      rounded-full
+      bg-cyan-500/10
+      blur-[140px]
+      " />
+
+
+
+      <div className="
+      absolute bottom-0 right-0
+      h-[350px] w-[350px]
+      rounded-full
+      bg-purple-600/10
+      blur-[120px]
+      " />
+
+
+
+
+
+
+
+      {/* HEADER */}
+
+
+      <motion.div
+
+        initial={{
+          opacity:0,
+          y:30
+        }}
+
+        whileInView={{
+          opacity:1,
+          y:0
+        }}
+
+        viewport={{
+          once:true
+        }}
+
+        className="
+        relative z-10
+        mx-auto
+        max-w-3xl
+        text-center
+        "
+
+      >
+
+
+
+        <p className="
+        text-xs
+        uppercase
+        tracking-[0.4em]
+        text-cyan-400
+        ">
+
+          Contact Me
+
+        </p>
+
+
+
+
+        <h2 className="
+        mt-5
+        text-4xl
+        font-black
+        md:text-6xl
+        ">
+
+          Let's Build
+
+          <span className="
+          block
+          bg-gradient-to-r
+          from-cyan-400
+          via-blue-500
+          to-purple-500
+          bg-clip-text
+          text-transparent
+          ">
+
+            Something Amazing
+
+          </span>
+
+
+        </h2>
+
+
+
+
+        <p className="
+        mt-6
+        text-gray-400
+        leading-7
+        ">
+
+          Have an idea or project?
+          Let's transform it into a modern digital experience.
+
+        </p>
+
+
+
+      </motion.div>
+
+
+
+
+
+
+
+
+
+      {/* FORM */}
+
+
+      <motion.form
+
+        onSubmit={onSubmit}
+
+
+        initial={{
+          opacity:0,
+          y:40
+        }}
+
+        whileInView={{
+          opacity:1,
+          y:0
+        }}
+
+        viewport={{
+          once:true
+        }}
+
+
+        className="
+        relative z-10
+        mx-auto mt-16
+        max-w-3xl
+        rounded-[35px]
+        border border-white/10
+        bg-white/5
+        p-6
+        backdrop-blur-2xl
+        md:p-10
+        "
+
+      >
+
+
+
+
+        <div className="
+        mb-8
+        flex
+        items-center
+        justify-between
+        ">
+
+
+          <h3 className="
+          text-2xl
+          font-bold
+          ">
+
+            Send Message
+
+          </h3>
+
+
+          <span className="
+          rounded-full
+          bg-emerald-500/20
+          px-4 py-2
+          text-xs
+          text-emerald-400
+          ">
+
+            Available
+
+          </span>
+
+
         </div>
-        <motion.textarea
-           initial={{ opacity: 0 ,y:100 }}
-           whileInView={{opacity:1,y:0}}
-           transition={{duration:0.6, delay:1.3}}
-         rows='6' placeholder='Enter your message ' name='message' className='w-full p-4 outline-none dark:bg-darkHover/30 dark:border-white/90   border-[0.5px] border-gray-400 rounded-md bg-white mb-6 ' required></motion.textarea>
+
+
+
+
+
+
+
+
+        {/* INPUTS */}
+
+
+        <div className="
+        grid
+        gap-5
+        md:grid-cols-2
+        ">
+
+
+          <input
+
+            type="text"
+
+            name="name"
+
+            required
+
+            placeholder="Your Name"
+
+            className="
+            rounded-2xl
+            border
+            border-white/10
+            bg-white/5
+            px-5 py-4
+            outline-none
+            transition
+            focus:border-cyan-400
+            "
+
+          />
+
+
+
+
+          <input
+
+            type="email"
+
+            name="email"
+
+            required
+
+            placeholder="Your Email"
+
+            className="
+            rounded-2xl
+            border
+            border-white/10
+            bg-white/5
+            px-5 py-4
+            outline-none
+            transition
+            focus:border-cyan-400
+            "
+
+          />
+
+
+        </div>
+
+
+
+
+
+
+        <textarea
+
+          rows="6"
+
+          name="message"
+
+          required
+
+          placeholder="Tell me about your project..."
+
+          className="
+          mt-5
+          w-full
+          rounded-2xl
+          border
+          border-white/10
+          bg-white/5
+          px-5 py-4
+          outline-none
+          transition
+          focus:border-cyan-400
+          "
+
+        />
+
+
+
+
+
+
+
+
+        {/* BUTTON */}
+
 
         <motion.button
-        whileHover={{scale:1.05}}
-        transition={{duration:0.3}}
-         type='submit' className='py-3 flex px-8 dark:bg-transparent dark:border-[0.5px]  dark:hover:bg-darkHover w-max items-center justify-between gap-2 bg-black/80 text-white rounded-full mx-auto hover:bg-black duration-500'>
-        Submit now <Image src={assets.right_arrow_white} className='w-4'/>
-        </motion.button>
-        <p className='mt-4'>{result}</p>
-    </motion.form>
-      
-    </motion.div>
-  )
-}
 
-export default Contact
+          whileHover={{
+            scale:1.03
+          }}
+
+
+          whileTap={{
+            scale:.97
+          }}
+
+
+          type="submit"
+
+          className="
+          mt-6
+          flex
+          w-full
+          items-center
+          justify-center
+          gap-3
+          rounded-2xl
+          bg-gradient-to-r
+          from-cyan-500
+          to-blue-600
+          py-4
+          font-semibold
+          "
+
+        >
+
+          Send Message
+
+
+          <Image
+
+            src={assets.right_arrow_white}
+
+            alt="arrow"
+
+            className="w-5"
+
+          />
+
+
+        </motion.button>
+
+
+
+
+
+        <p className="
+        mt-5
+        text-center
+        text-sm
+        text-gray-400
+        ">
+
+          {result}
+
+        </p>
+
+
+
+      </motion.form>
+
+
+
+
+    </section>
+
+  );
+
+};
+
+
+export default Contact;
