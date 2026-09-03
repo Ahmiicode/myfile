@@ -1,23 +1,23 @@
-import { Outfit,Ovo } from "next/font/google";
+import { Outfit, Ovo } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const outfit = Outfit({
-  subsets: ["latin"], weight:["400","500","600","700"]
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const ovo =Ovo({
-  subsets: ["latin"], weight:["400"]
+const ovo = Ovo({
+  subsets: ["latin"],
+  weight: ["400"],
 });
-
-
-
 
 export const metadata = {
-  title: 'Ahmad Naeem',
+  title: "Ahmad Naeem",
   icons: {
-    icon: '/favicon-52x52.png',
-    shortcut: '/favicon-55x55.png',
-    apple: '/apple-touch-icon.png',
+    icon: "/favicon-52x52.png",
+    shortcut: "/favicon-55x55.png",
+    apple: "/apple-touch-icon.png",
   },
 };
 
@@ -29,6 +29,12 @@ export default function RootLayout({ children }) {
         overflow-x-hidden dark:bg-darkTheme dark:text-white`}
       >
         {children}
+
+        <Script
+          src="https://cdn.zanderio.ai/widget/loader.js"
+          data-id="wdg_7YQM9CZSU9lSqIucZUdrvnnw"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
