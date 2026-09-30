@@ -12,7 +12,7 @@ const WhatsAppButton = () => {
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
       whileHover={{ scale: 1.1 }}
-      className="fixed bottom-6 right-6 z-50"
+      className="fixed bottom-6 left-6 z-50"
     >
       <div className="w-14 h-14 rounded-full bg-green-500 shadow-lg shadow-green-500/40 flex items-center justify-center hover:bg-green-600 transition">
         

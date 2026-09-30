@@ -77,6 +77,12 @@ export const assets = {
 };
 
 export const workData = [
+  {
+  title: 'Dental Doctor Full Stack Website ',
+  description: 'A sleek real estate booking website designed for showcasing properties, with intuitive navigation, filtering, and modern UI components.',
+  bgImage: '/work-9.png',
+  liveSite: 'https://www.hafeezdentalcare.com/',
+},
  {
   title: 'Madicate Frontend project',
   description: 'Healthcare landing page for a modern medical tech brand, built with responsive design and sleek UI components.',

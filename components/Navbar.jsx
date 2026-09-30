@@ -70,11 +70,11 @@ const Navbar = ({ isdarkMode, setisdarkMode }) => {
             className="text-xl md:text-2xl font-black tracking-wide text-white"
           >
 
-            Ahmad
+            Builds
 
             <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
 
-              _thedev
+              byahmad
 
             </span>
 
