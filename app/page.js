@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import About from "@/components/About";
 import Services from "@/components/Services";
 import Work from "@/components/Work";
-import FAQ from "@/components/FaqSection"; // 👈 FAQ Import kiya hai
+import FAQ from "@/components/CommonFaq"; // 👈 FAQ Import kiya hai
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
