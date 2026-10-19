@@ -5,322 +5,89 @@ import Image from "next/image";
 import { assets } from "@/assets/assets";
 import { motion } from "framer-motion";
 
-
 const Footer = () => {
-
   return (
-
-    <footer
-
-      className="
-      relative overflow-hidden
-      mt-20
-      border-t border-white/10
-      bg-[#050816]
-      px-6 py-16
-      text-white
-      md:px-[10%]
-      "
-
-    >
-
-
-
-      {/* Glow */}
-
-      <div className="
-      absolute left-1/2 top-0
-      h-[300px] w-[300px]
-      -translate-x-1/2
-      rounded-full
-      bg-cyan-500/10
-      blur-[120px]
-      " />
-
-
-
-
-
-
-      {/* TOP */}
-
-
+    <footer className="relative overflow-hidden bg-white border-t border-gray-200 px-6 py-20 text-black md:px-[10%]">
+      
+      {/* TOP SECTION - Minimal Branding */}
       <motion.div
-
-        initial={{
-          opacity:0,
-          y:30
-        }}
-
-        whileInView={{
-          opacity:1,
-          y:0
-        }}
-
-        viewport={{
-          once:true
-        }}
-
-        className="
-        relative z-10
-        text-center
-        "
-
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="relative z-10 flex flex-col items-center text-center"
       >
-
-
-
-        <h1 className="
-        text-3xl
-        font-black
-        tracking-wide
-        md:text-4xl
-        ">
-
-          Ahmad
-
-          <span className="
-          bg-gradient-to-r
-          from-cyan-400
-          via-blue-500
-          to-purple-500
-          bg-clip-text
-          text-transparent
-          ">
-
-            _thedev
-
-          </span>
-
-
+        {/* Sleek Logo */}
+        <h1 className="text-3xl font-black tracking-tighter md:text-5xl">
+          Builds<span className="text-[#D4AF37]">byahmad.</span>
         </h1>
 
-
-
-
-
-        <p className="
-        mt-3
-        text-sm
-        text-gray-400
-        ">
-
-          MERN Stack Developer • UI Engineer • Freelancer
-
+        <p className="mt-4 text-sm font-medium tracking-wide text-gray-500 uppercase">
+          Independent Full-Stack Developer
         </p>
 
-
-
-
-
-
-
-        {/* EMAIL */}
-
-
-        <div className="
-        mx-auto mt-7
-        flex w-fit
-        items-center
-        gap-3
-        rounded-full
-        border border-white/10
-        bg-white/5
-        px-6 py-3
-        backdrop-blur-xl
-        ">
-
-
-          <Image
-
-            src={assets.mail_icon}
-
-            alt="mail"
-
-            className="w-5 opacity-80"
-
-          />
-
-
-          <span className="
-          text-sm
-          text-gray-300
-          ">
-
+        {/* Clean Email Link (No bulky boxes) */}
+        <div className="mt-10">
+          <a
+            href="mailto:an1748452@gmail.com"
+            className="group inline-flex items-center gap-3 text-lg font-bold text-black transition-colors hover:text-gray-600 md:text-2xl"
+          >
+            {/* Minimal Icon (Optional, keeping it clean) */}
+            <Image
+              src={assets.mail_icon}
+              alt="mail"
+              className="w-5 grayscale transition-transform group-hover:scale-110 md:w-6"
+            />
             an1748452@gmail.com
-
-          </span>
-
-
+          </a>
+          {/* Animated Underline */}
+          <div className="mx-auto mt-2 h-[2px] w-12 bg-[#D4AF37] transition-all duration-300 group-hover:w-full" />
         </div>
-
-
-
-
       </motion.div>
 
-
-
-
-
-
-
-
-
-      {/* BOTTOM */}
-
-
-      <div className="
-      relative z-10
-      mt-14
-      flex
-      flex-col
-      items-center
-      justify-between
-      gap-6
-      border-t
-      border-white/10
-      pt-8
-      sm:flex-row
-      ">
-
-
-
-
-        <p className="
-        text-center
-        text-sm
-        text-gray-500
-        sm:text-left
-        ">
-
-          © 2026 Ahmad_thedev. All rights reserved.
-
+      {/* BOTTOM SECTION - Copyright & Socials */}
+      <div className="relative z-10 mt-24 flex flex-col items-center justify-between gap-6 border-t border-gray-100 pt-8 sm:flex-row">
+        
+        <p className="text-center text-xs font-bold uppercase tracking-widest text-gray-400 sm:text-left">
+          © 2026 Buildsbyahmad. All rights reserved.
         </p>
 
-
-
-
-
-
-
-        {/* SOCIAL */}
-
-        <div className="
-        flex
-        gap-4
-        ">
-
-
-
+        {/* SOCIAL LINKS - Minimal Text Style */}
+        <div className="flex flex-wrap justify-center gap-6 md:gap-8">
+          
           <motion.a
-
-            whileHover={{
-              y:-5,
-              scale:1.05
-            }}
-
+            whileHover={{ y: -3 }}
             target="_blank"
-
+            rel="noopener noreferrer"
             href="https://github.com/Ahmiicode"
-
-            className="
-            rounded-full
-            border border-white/10
-            bg-white/5
-            px-5 py-2
-            text-sm
-            text-gray-300
-            transition
-            hover:text-cyan-400
-            "
-
+            className="text-xs font-bold uppercase tracking-widest text-gray-500 transition-colors hover:text-black"
           >
-
             GitHub
-
           </motion.a>
 
-
-
-
-
           <motion.a
-
-            whileHover={{
-              y:-5,
-              scale:1.05
-            }}
-
+            whileHover={{ y: -3 }}
             target="_blank"
-
+            rel="noopener noreferrer"
             href="https://www.linkedin.com/in/ahmad-naeem-b94151326/"
-
-            className="
-            rounded-full
-            border border-white/10
-            bg-white/5
-            px-5 py-2
-            text-sm
-            text-gray-300
-            transition
-            hover:text-cyan-400
-            "
-
+            className="text-xs font-bold uppercase tracking-widest text-gray-500 transition-colors hover:text-[#0A66C2]"
           >
-
             LinkedIn
-
           </motion.a>
-
-
-
-
-
 
           <motion.a
-
-            whileHover={{
-              y:-5,
-              scale:1.05
-            }}
-
+            whileHover={{ y: -3 }}
             target="_blank"
-
+            rel="noopener noreferrer"
             href="https://www.instagram.com/__codewith.ahmad/profilecard"
-
-            className="
-            rounded-full
-            border border-white/10
-            bg-white/5
-            px-5 py-2
-            text-sm
-            text-gray-300
-            transition
-            hover:text-cyan-400
-            "
-
+            className="text-xs font-bold uppercase tracking-widest text-gray-500 transition-colors hover:text-[#E1306C]"
           >
-
             Instagram
-
           </motion.a>
-
-
 
         </div>
-
-
-
       </div>
-
-
-
     </footer>
-
   );
-
 };
-
 
 export default Footer;

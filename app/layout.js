@@ -13,7 +13,9 @@ const ovo = Ovo({
 });
 
 export const metadata = {
-  title: "Ahmad Naeem",
+  title: "Builds by Ahmad | Next.js & MERN Stack Developer",
+  description: "Independent full-stack developer in Pakistan specializing in Next.js, MERN stack, Shopify, and WordPress. I build high-converting web applications.",
+  keywords: ["Next.js developer", "MERN stack freelancer", "Shopify expert", "Web developer in Pakistan"],
   icons: {
     icon: "/favicon-52x52.png",
     shortcut: "/favicon-55x55.png",
@@ -23,11 +25,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="scroll-smooth dark">
-      <body
-        className={`${outfit.className} ${ovo.className} antialiased leading-8 
-        overflow-x-hidden dark:bg-darkTheme dark:text-white`}
-      >
+    <html lang="en" className="scroll-smooth">
+      <body className={`${outfit.className} ${ovo.className} antialiased leading-8 overflow-x-hidden bg-white text-black`}>
         {children}
 
         <Script
