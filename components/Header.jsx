@@ -20,10 +20,11 @@ const stats = [
 
 export default function Header() {
   return (
-    <section className="relative min-h-screen bg-white text-black overflow-hidden flex items-center">
+    // Yahan pt-32 aur pb-24 add kiya hai taake Navbar aur WhatsApp disturb na hon
+    <section className="relative min-h-screen bg-transparent text-black overflow-hidden flex items-center pt-32 pb-24 lg:pt-32">
       
       {/* Content Container */}
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-12 px-6 pt-24 lg:flex-row lg:gap-16 lg:pt-0">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-12 px-6 lg:flex-row lg:gap-16">
         
         {/* LEFT CONTENT */}
         <motion.div
@@ -54,15 +55,15 @@ export default function Header() {
 
           {/* Buttons - Clean & Sharp */}
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-            <button className="group relative inline-flex w-full items-center justify-center gap-2 overflow-hidden bg-black px-8 py-4 font-semibold text-white transition-all hover:bg-gray-800 sm:w-auto">
+            <a href="#contact" className="group relative inline-flex w-full items-center justify-center gap-2 overflow-hidden bg-black px-8 py-4 font-semibold text-white transition-all hover:bg-gray-800 sm:w-auto">
               Let's Talk
               <svg className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
               </svg>
-            </button>
-            <button className="w-full sm:w-auto border-b-2 border-transparent px-6 py-4 font-bold text-gray-600 transition-all hover:border-black hover:text-black">
+            </a>
+            <a href="#work" className="w-full sm:w-auto border-b-2 border-transparent px-6 py-4 font-bold text-gray-600 transition-all hover:border-black hover:text-black">
               View Portfolio ↓
-            </button>
+            </a>
           </div>
 
           {/* Minimal Tech Tags */}
@@ -77,7 +78,7 @@ export default function Header() {
             ))}
           </div>
 
-          {/* Stats - Shifted neatly to the bottom left */}
+          {/* Stats */}
           <div className="mt-12 flex justify-center lg:justify-start gap-12 pt-6">
             {stats.map((item) => (
               <div key={item.title} className="text-center lg:text-left">
@@ -92,36 +93,36 @@ export default function Header() {
           </div>
         </motion.div>
 
-        {/* RIGHT IMAGE - ZERO CLUTTER, JUST PURE ELEGANCE */}
+        {/* RIGHT IMAGE - Sleek, Magazine Editorial Style */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative flex flex-1 items-center justify-center lg:justify-end"
+          className="relative flex flex-1 items-center justify-center lg:justify-end mt-10 lg:mt-0"
         >
-          {/* Architectural Style Image Container */}
-          <div className="relative h-[400px] w-[320px] sm:h-[500px] sm:w-[400px] lg:h-[550px] lg:w-[440px]">
+          {/* Container Dimensions Chote aur Sleek kiye hain */}
+          <div className="relative h-[380px] w-[280px] sm:h-[450px] sm:w-[320px] lg:h-[500px] lg:w-[360px]">
             
             {/* Subtle Gold Offset Frame */}
-            <div className="absolute -inset-4 rounded-2xl border border-[#D4AF37]/30 translate-x-4 translate-y-4" />
+            <div className="absolute -inset-3 rounded-2xl border border-[#D4AF37]/40 translate-x-3 translate-y-3" />
 
             {/* Main Image Box */}
-            <div className="relative h-full w-full rounded-2xl bg-gray-100 overflow-hidden shadow-2xl">
+            <div className="relative h-full w-full rounded-2xl bg-gray-100 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
               <motion.div whileHover={{ scale: 1.03 }} transition={{ duration: 0.5 }} className="h-full w-full">
+                {/* Legacy props hata kar modern Next Image use kiya hai */}
                 <Image
                   src={assets.profile_img}
-                  alt="Ahmad Naeem"
-                  layout="fill"
-                  objectFit="cover"
-                  objectPosition="top"
+                  alt="Ahmad Naeem - Full Stack Developer"
+                  fill
                   priority
-                  className="drop-shadow-sm" 
+                  className="object-cover object-top drop-shadow-sm" 
                 />
               </motion.div>
             </div>
             
           </div>
         </motion.div>
+
       </div>
     </section>
   );

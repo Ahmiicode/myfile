@@ -1,18 +1,31 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { workData } from "@/assets/assets";
 
 const Work = () => {
+  const scrollRef = useRef(null);
+
+  // Arrow buttons function to scroll the slider smoothly
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const scrollAmount = window.innerWidth * 0.85; // Mobile card ki width ke hisaab se
+      scrollRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <section
       id="work"
       className="relative overflow-hidden bg-white px-0 py-32 text-black md:px-[10%]"
     >
-      {/* HEADER SECTION (Padding adjusted for mobile slider) */}
-      <div className="relative z-10 mx-auto max-w-7xl border-b border-gray-200 pb-12 px-6 md:px-0 text-center md:text-left flex flex-col md:flex-row md:items-end justify-between gap-8">
+      {/* HEADER SECTION */}
+      <div className="relative z-10 mx-auto max-w-7xl border-b border-gray-200 pb-8 px-6 md:px-0 text-center md:text-left flex flex-col md:flex-row md:items-end justify-between gap-8 md:pb-12">
         <div>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -39,19 +52,47 @@ const Work = () => {
           className="hidden md:block"
         >
           <p className="max-w-xs text-sm font-medium text-gray-500 leading-relaxed text-right">
-            A collection of real-world applications built with modern technologies, focusing on performance and premium user experience.
+            A collection of real-world applications built with modern technologies, focusing on performance.
           </p>
         </motion.div>
       </div>
 
+      {/* 🔥 MOBILE NAVIGATION ARROWS (Only visible on mobile) */}
+      <div className="flex items-center justify-between px-6 mt-6 md:hidden">
+        <p className="text-xs font-bold uppercase tracking-widest text-gray-400">
+          Swipe or Click
+        </p>
+        <div className="flex gap-2">
+          <button
+            onClick={() => scroll("left")}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-gray-50 text-gray-600 transition-colors hover:bg-black hover:text-white active:bg-gray-800"
+          >
+            {/* Left Arrow SVG */}
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+          </button>
+          <button
+            onClick={() => scroll("right")}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-gray-50 text-gray-600 transition-colors hover:bg-black hover:text-white active:bg-gray-800"
+          >
+            {/* Right Arrow SVG */}
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
       {/* 
-        PROJECTS SLIDER (MOBILE) & ZIG-ZAG (DESKTOP)
-        Mobile: flex, overflow-x-auto, snap-x (Left/Right scroll)
-        Desktop: flex-col, overflow-visible (Vertical Zig-Zag)
-        Scrollbar is hidden for a clean look
+        PROJECTS SLIDER
+        Mobile: Left/Right scroll with Snap
+        Desktop: Vertical Zig-Zag
       */}
-      <div className="relative z-10 mx-auto max-w-7xl mt-16 md:mt-24 flex overflow-x-auto snap-x snap-mandatory gap-6 px-6 pb-12 md:flex-col md:overflow-visible md:gap-32 md:px-0 scrollbar-hide [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-        
+      <div
+        ref={scrollRef}
+        className="relative z-10 mx-auto max-w-7xl mt-8 flex overflow-x-auto snap-x snap-mandatory gap-6 px-6 pb-12 md:mt-24 md:flex-col md:overflow-visible md:gap-32 md:px-0 scrollbar-hide [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+      >
         {workData.map((project, index) => (
           <motion.div
             key={index}
@@ -59,22 +100,18 @@ const Work = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6 }}
-            // Mobile par width 85vw rakhi hai taake agla card thora sa peek kare
             className={`group w-[85vw] shrink-0 snap-center flex flex-col items-center gap-8 md:w-full md:gap-16 ${
               index % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"
             }`}
           >
-            
-            {/* IMAGE CONTAINER - Fixed height and 'contain' to stop cropping */}
+            {/* IMAGE CONTAINER */}
             <div className="w-full md:w-3/5">
               <div className="relative w-full h-[280px] sm:h-[350px] md:h-[450px] rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 shadow-sm flex items-center justify-center p-4">
-                
                 <Image
                   src={project.bgImage}
                   alt={project.title}
-                  layout="fill"
-                  objectFit="contain" /* IS SE IMAGE KATEGGI NAHI */
-                  className="p-4 transition-transform duration-700 ease-in-out group-hover:scale-105"
+                  fill
+                  className="object-contain p-4 transition-transform duration-700 ease-in-out group-hover:scale-105"
                   priority={index < 2}
                 />
                 
@@ -87,7 +124,6 @@ const Work = () => {
 
             {/* CONTENT CONTAINER */}
             <div className="w-full flex flex-col justify-center md:w-2/5 text-left">
-              
               <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#D4AF37]">
                 Case Study
               </p>
@@ -102,7 +138,7 @@ const Work = () => {
 
               {/* Tech Tags */}
               <div className="mt-5 flex flex-wrap gap-2 md:mt-8">
-                {["React", "Next.js", "WordPress", "Shopify", "Tailwind"].map((item) => (
+                {["React", "Next.js", "WordPress", "Shopify"].map((item) => (
                   <span
                     key={item}
                     className="border border-gray-200 bg-white px-3 py-1 md:px-4 md:py-1.5 text-[9px] md:text-[10px] font-bold text-gray-500 uppercase tracking-widest"

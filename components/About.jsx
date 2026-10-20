@@ -28,7 +28,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-white px-6 py-32 text-black md:px-[10%]"
+      className="relative overflow-hidden  px-6 py-32 text-black md:px-[10%]"
     >
       {/* Background Subtle Gradient Lines */}
       <div className="absolute inset-0 z-0 opacity-5 pointer-events-none">

@@ -10,7 +10,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 
 export default function Home() {
   return (
-    <main className="bg-white min-h-screen">
+    <main className="bg-transparent min-h-screen">
       {/* 
         NOTE: Dark mode ke props hata diye hain kyunke ab humari 
         theme 100% Premium White hai. Is se code fast aur clean ho gaya hai.
