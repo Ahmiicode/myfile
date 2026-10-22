@@ -80,7 +80,7 @@ export const workData = [
   {
     title: 'Dental Doctor Full Stack Website',
     description: 'A sleek real estate booking website designed for showcasing properties, with intuitive navigation, filtering, and modern UI components.',
-    bgImage: '/work-9.png',
+    bgImage: '/work-22.png',
     liveSite: 'https://www.hafeezdentalcare.com/',
     category: 'Next.js',
   },
