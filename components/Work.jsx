@@ -1,175 +1,196 @@
-"use client";
+'use client';
 
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import { workData } from "@/assets/assets";
 
-const Work = () => {
-  const scrollRef = useRef(null);
+const categories = ["All", "Next.js", "Shopify", "WordPress"];
 
-  // Arrow buttons function to scroll the slider smoothly
-  const scroll = (direction) => {
-    if (scrollRef.current) {
-      const scrollAmount = window.innerWidth * 0.85; // Mobile card ki width ke hisaab se
-      scrollRef.current.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
-        behavior: "smooth",
-      });
-    }
-  };
+const Work = () => {
+  const [activeTab, setActiveTab] = useState("All");
+
+  const filteredProjects = workData.filter(
+    (project) => activeTab === "All" || project.category === activeTab
+  );
 
   return (
     <section
       id="work"
-      className="relative overflow-hidden bg-white px-0 py-32 text-black md:px-[10%]"
+      className="relative w-full bg-[#FAFAFA] px-0 md:px-6 py-24 md:py-32 text-black md:px-[10%] overflow-hidden selection:bg-[#D4AF37] selection:text-white"
     >
-      {/* HEADER SECTION */}
-      <div className="relative z-10 mx-auto max-w-7xl border-b border-gray-200 pb-8 px-6 md:px-0 text-center md:text-left flex flex-col md:flex-row md:items-end justify-between gap-8 md:pb-12">
-        <div>
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
+      <div className="mx-auto w-full max-w-7xl">
+        
+        {/* HEADER & FILTER TABS (Added horizontal padding for mobile) */}
+        <div className="px-6 md:px-0 flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 md:gap-10 border-b-2 border-black pb-10 md:pb-12 mb-10 md:mb-16">
+          
+          <div>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-[10px] font-black uppercase tracking-[0.4em] text-[#D4AF37] mb-4 md:mb-6"
+            >
+              Case Studies
+            </motion.p>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-5xl md:text-7xl lg:text-8xl font-black text-black tracking-tighter leading-[0.85] uppercase"
+            >
+              Selected <br />
+              <span className="text-transparent" style={{ WebkitTextStroke: '2px black' }}>
+                Works.
+              </span>
+            </motion.h2>
+          </div>
+
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="text-[11px] font-bold uppercase tracking-[0.4em] text-[#D4AF37]"
+            className="flex flex-wrap items-center gap-4 md:gap-8"
           >
-            Case Studies
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-4 text-4xl font-black tracking-tight text-gray-900 md:text-6xl"
-          >
-            Selected <span className="text-gray-400">Works.</span>
-          </motion.h2>
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="hidden md:block"
-        >
-          <p className="max-w-xs text-sm font-medium text-gray-500 leading-relaxed text-right">
-            A collection of real-world applications built with modern technologies, focusing on performance.
-          </p>
-        </motion.div>
-      </div>
-
-      {/* 🔥 MOBILE NAVIGATION ARROWS (Only visible on mobile) */}
-      <div className="flex items-center justify-between px-6 mt-6 md:hidden">
-        <p className="text-xs font-bold uppercase tracking-widest text-gray-400">
-          Swipe or Click
-        </p>
-        <div className="flex gap-2">
-          <button
-            onClick={() => scroll("left")}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-gray-50 text-gray-600 transition-colors hover:bg-black hover:text-white active:bg-gray-800"
-          >
-            {/* Left Arrow SVG */}
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-            </svg>
-          </button>
-          <button
-            onClick={() => scroll("right")}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-gray-50 text-gray-600 transition-colors hover:bg-black hover:text-white active:bg-gray-800"
-          >
-            {/* Right Arrow SVG */}
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      {/* 
-        PROJECTS SLIDER
-        Mobile: Left/Right scroll with Snap
-        Desktop: Vertical Zig-Zag
-      */}
-      <div
-        ref={scrollRef}
-        className="relative z-10 mx-auto max-w-7xl mt-8 flex overflow-x-auto snap-x snap-mandatory gap-6 px-6 pb-12 md:mt-24 md:flex-col md:overflow-visible md:gap-32 md:px-0 scrollbar-hide [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
-      >
-        {workData.map((project, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6 }}
-            className={`group w-[85vw] shrink-0 snap-center flex flex-col items-center gap-8 md:w-full md:gap-16 ${
-              index % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"
-            }`}
-          >
-            {/* IMAGE CONTAINER */}
-            <div className="w-full md:w-3/5">
-              <div className="relative w-full h-[280px] sm:h-[350px] md:h-[450px] rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 shadow-sm flex items-center justify-center p-4">
-                <Image
-                  src={project.bgImage}
-                  alt={project.title}
-                  fill
-                  className="object-contain p-4 transition-transform duration-700 ease-in-out group-hover:scale-105"
-                  priority={index < 2}
-                />
-                
-                {/* Number Indicator */}
-                <div className="absolute top-4 left-4 md:top-6 md:left-6 flex h-8 w-8 md:h-10 md:w-10 items-center justify-center bg-white text-[10px] md:text-xs font-bold text-black shadow-lg rounded-full md:rounded-none">
-                  0{index + 1}
-                </div>
-              </div>
-            </div>
-
-            {/* CONTENT CONTAINER */}
-            <div className="w-full flex flex-col justify-center md:w-2/5 text-left">
-              <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#D4AF37]">
-                Case Study
-              </p>
-
-              <h3 className="mt-3 text-2xl font-black text-gray-900 md:text-4xl md:mt-4">
-                {project.title}
-              </h3>
-
-              <p className="mt-3 text-sm font-medium leading-relaxed text-gray-600 md:text-base md:mt-5 line-clamp-3 md:line-clamp-none">
-                {project.description}
-              </p>
-
-              {/* Tech Tags */}
-              <div className="mt-5 flex flex-wrap gap-2 md:mt-8">
-                {["React", "Next.js", "WordPress", "Shopify"].map((item) => (
-                  <span
-                    key={item}
-                    className="border border-gray-200 bg-white px-3 py-1 md:px-4 md:py-1.5 text-[9px] md:text-[10px] font-bold text-gray-500 uppercase tracking-widest"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-
-              {/* Button */}
-              {project.liveSite ? (
-                <a
-                  href={project.liveSite}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-8 inline-flex w-fit items-center gap-2 bg-black px-6 py-3 md:px-8 md:py-4 text-xs md:text-sm font-bold text-white transition-all hover:bg-gray-800 hover:shadow-lg rounded-full md:rounded-none"
-                >
-                  View Live Project
-                  <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </a>
-              ) : (
-                <p className="mt-8 text-xs md:text-sm font-bold tracking-widest text-gray-400 uppercase">
-                  Coming Soon
-                </p>
-              )}
-            </div>
-            
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveTab(cat)}
+                className={`relative text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] transition-colors duration-300 pb-2 ${
+                  activeTab === cat ? "text-black" : "text-black/30 hover:text-black/60"
+                }`}
+              >
+                {cat}
+                {activeTab === cat && (
+                  <motion.div
+                    layoutId="workTab"
+                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#D4AF37]"
+                  />
+                )}
+              </button>
+            ))}
           </motion.div>
-        ))}
+        </div>
+
+        {/* PROJECTS SECTION: Slider on Mobile, Grid on Desktop */}
+        {/* Added custom scrollbar hiding styles inline or via classes if you have a plugin */}
+        <motion.div 
+          layout 
+          className="flex md:grid md:grid-cols-2 gap-6 md:gap-x-12 md:gap-y-20 lg:gap-x-16 lg:gap-y-24 
+                     overflow-x-auto md:overflow-visible snap-x snap-mandatory 
+                     px-6 md:px-0 pb-12 md:pb-0 scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project, index) => {
+              const num = String(index + 1).padStart(2, '0');
+              
+              return (
+                <motion.div
+                  layout
+                  key={project.title}
+                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.9, filter: 'blur(5px)' }}
+                  transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
+                  // Mobile: Fixed width (85vw) for slider effect. Desktop: 100% width of grid column.
+                  className="group flex flex-col w-[85vw] md:w-full flex-shrink-0 snap-center md:snap-align-none h-full"
+                >
+                  
+                  {/* 🔥 FIXED IMAGE CONTAINER */}
+                  <div className="relative w-full aspect-[4/3] bg-gray-50 overflow-hidden mb-6 md:mb-8 border border-gray-200">
+                    
+                    {/* Floating Number */}
+                    <div className="absolute top-4 left-4 md:top-6 md:left-6 z-20 text-2xl md:text-3xl font-black text-black/10 select-none">
+                      /{num}
+                    </div>
+                    
+                    {/* FIXED IMAGE */}
+                    <Image
+                      src={project.bgImage}
+                      alt={project.title}
+                      fill
+                      className="object-contain p-6 md:p-10 opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out pointer-events-none md:pointer-events-auto"
+                    />
+                    
+                    {/* Hover Launch Button (Desktop only hover effect, Mobile shows link below) */}
+                    {project.liveSite && (
+                      <a 
+                        href={project.liveSite} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="hidden md:flex absolute inset-0 items-center justify-center bg-white/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 backdrop-blur-sm z-20"
+                      >
+                        <span className="flex items-center gap-3 bg-black px-6 py-3 text-[10px] font-black uppercase tracking-widest text-white hover:bg-[#D4AF37] hover:text-black transition-colors shadow-xl">
+                          Launch Site <ArrowUpRight className="w-4 h-4" />
+                        </span>
+                      </a>
+                    )}
+                  </div>
+
+                  {/* Content Container */}
+                  <div className="flex flex-col flex-grow">
+                    
+                    <div className="flex items-center gap-4 mb-3 md:mb-4">
+                      <span className="px-3 py-1 border border-black/20 text-[9px] font-black uppercase tracking-[0.2em] text-black">
+                        {project.category}
+                      </span>
+                    </div>
+
+                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-black tracking-tight leading-[1.1] mb-3 md:mb-4 group-hover:text-[#D4AF37] transition-colors duration-300">
+                      {project.title}
+                    </h3>
+
+                    <p className="text-xs md:text-sm font-medium leading-relaxed text-black/60 mb-6 md:mb-8 line-clamp-3">
+                      {project.description}
+                    </p>
+
+                    {/* Tech Tags */}
+                    {project.techStack && (
+                      <div className="flex flex-wrap gap-y-2 gap-x-4 mt-auto border-t border-black/10 pt-4 md:pt-5">
+                        {project.techStack.map((item) => (
+                          <span
+                            key={item}
+                            className="text-[9px] font-bold text-black/50 uppercase tracking-[0.1em]"
+                          >
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Mobile Only Live Link */}
+                    {project.liveSite && (
+                      <a
+                        href={project.liveSite}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="md:hidden mt-5 flex items-center justify-between gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-white bg-black px-5 py-3 w-full active:scale-95 transition-transform"
+                      >
+                        View Live Project <ArrowUpRight className="w-4 h-4" />
+                      </a>
+                    )}
+
+                  </div>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* Empty State */}
+        {filteredProjects.length === 0 && (
+          <motion.div 
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+            className="w-full py-20 flex flex-col items-center text-center px-6"
+          >
+            <p className="text-xl md:text-2xl font-black text-black/20 uppercase tracking-widest">No Projects found in this category.</p>
+            <button onClick={() => setActiveTab("All")} className="mt-6 text-[10px] font-bold uppercase tracking-widest text-[#D4AF37] border-b border-[#D4AF37] pb-1">
+              View All Works
+            </button>
+          </motion.div>
+        )}
+
       </div>
     </section>
   );

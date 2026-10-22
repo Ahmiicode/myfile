@@ -1,24 +1,28 @@
-"use client";
+'use client';
 
 import React from "react";
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 
-// Maine data yahin custom likh diya hai taake text short aur client-focused rahay
+// Data mein explicitly "tech" array add kiya hai taake clear nazar aaye
 const servicesList = [
   {
     id: "01",
     title: "Full-Stack Web Apps",
-    description: "Custom, high-speed applications built from scratch using Next.js and the MERN stack.",
+    description: "Custom, highly scalable architectures built from scratch. Perfect for SaaS platforms, dashboards, and complex business logic.",
+    tech: ["Next.js", "MERN Stack", "Node.js", "MongoDB"]
   },
   {
     id: "02",
     title: "E-Commerce Stores",
-    description: "High-converting online shops built on Shopify and WordPress to maximize your sales.",
+    description: "High-converting online shops tailored to maximize your sales. Fast loading times with secure, custom payment integrations.",
+    tech: ["Shopify", "WordPress", "WooCommerce", "Liquid"]
   },
   {
     id: "03",
     title: "Premium Landing Pages",
-    description: "Beautifully animated, fast-loading pages designed strictly to capture leads and clients.",
+    description: "Beautifully animated, lightning-fast one-page websites designed strictly to capture high-ticket leads and clients.",
+    tech: ["React Vite", "Framer Motion", "Tailwind CSS"]
   }
 ];
 
@@ -26,69 +30,102 @@ const Services = () => {
   return (
     <section
       id="services"
-      className="relative w-full bg-gray-50 px-6 py-32 text-black md:px-[10%] overflow-hidden"
+      className="relative w-full bg-[#FAFAFA] px-6 py-32 text-black md:px-[10%] overflow-hidden selection:bg-[#D4AF37] selection:text-white"
     >
-      {/* HEADER - Short & Direct */}
-      <div className="mx-auto max-w-3xl text-center">
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-[11px] font-bold uppercase tracking-[0.4em] text-[#D4AF37]"
-        >
-          My Expertise
-        </motion.p>
+      <div className="mx-auto w-full max-w-7xl">
+        
+        {/* HEADER */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-20">
+          <div>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-[10px] font-black uppercase tracking-[0.4em] text-[#D4AF37] mb-6 block"
+            >
+              My Expertise
+            </motion.p>
 
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-4 text-4xl font-black md:text-5xl lg:text-6xl tracking-tight text-gray-900"
-        >
-          What I can do <span className="text-gray-400">for you.</span>
-        </motion.h2>
-      </div>
-
-      {/* SERVICES GRID - Extremely Easy to Read */}
-      <div className="mx-auto mt-20 grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-3">
-        {servicesList.map((item, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-5xl md:text-7xl lg:text-8xl font-black text-black tracking-tighter leading-[0.9] uppercase"
+            >
+              Core <br />
+              <span className="text-transparent" style={{ WebkitTextStroke: '2px black' }}>
+                Offerings.
+              </span>
+            </motion.h2>
+          </div>
+          
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="group relative flex flex-col justify-between bg-white border border-gray-200 p-10 transition-all duration-300 hover:border-black hover:shadow-2xl"
+            transition={{ delay: 0.2 }}
+            className="max-w-[280px] text-sm font-bold text-black/50 md:text-right pb-2"
           >
-            {/* Background Big Number (Editorial Style) */}
-            <div className="absolute right-6 top-6 text-7xl font-black text-gray-50 transition-colors duration-300 group-hover:text-gray-100 select-none">
-              {item.id}
-            </div>
+            Focused exclusively on high-performance development and conversion-driven design. No fluff, just results.
+          </motion.p>
+        </div>
 
-            {/* Content */}
-            <div className="relative z-10">
-              <h3 className="text-2xl font-black text-gray-900 mb-4">
+        {/* INTERACTIVE LIST WITH TECH TAGS */}
+        <div className="border-t-2 border-black flex flex-col">
+          {servicesList.map((item, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="group relative flex flex-col md:flex-row md:items-center justify-between border-b-2 border-black py-10 md:py-14 px-4 hover:bg-black transition-colors duration-500 cursor-pointer overflow-hidden"
+            >
+              {/* Floating Gold Hover Overlay */}
+              <div className="absolute inset-0 bg-[#D4AF37]/5 translate-y-full group-hover:translate-y-0 transition-transform duration-700 pointer-events-none"></div>
+
+              {/* Number */}
+              <div className="text-sm font-black text-black/30 group-hover:text-white/40 transition-colors duration-500 mb-6 md:mb-0 w-16 md:w-24 shrink-0 relative z-10">
+                / {item.id}
+              </div>
+
+              {/* Huge Title */}
+              <h3 className="text-3xl md:text-5xl lg:text-6xl font-black text-black group-hover:text-white transition-colors duration-500 flex-1 uppercase tracking-tight relative z-10">
                 {item.title}
               </h3>
-              <p className="text-sm font-medium leading-relaxed text-gray-600">
-                {item.description}
-              </p>
-            </div>
 
-            {/* Simple Text Link */}
-            <div className="relative z-10 mt-12">
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 text-sm font-bold text-black border-b border-transparent pb-1 transition-all group-hover:border-black"
-              >
-                Discuss Project 
-                <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
-            </div>
-          </motion.div>
-        ))}
+              {/* Description, TECH TAGS & Action Icon */}
+              <div className="flex flex-col sm:flex-row sm:items-start gap-6 md:gap-12 mt-8 md:mt-0 w-full md:w-[45%] justify-between md:justify-end relative z-10">
+                
+                <div className="flex flex-col gap-5">
+                  {/* Service Description */}
+                  <p className="text-sm font-medium text-black/60 group-hover:text-white/70 transition-colors duration-500 max-w-[320px]">
+                    {item.description}
+                  </p>
+                  
+                  {/* TECH STACK TAGS (Clear & Prominent) */}
+                  <div className="flex flex-wrap gap-2">
+                    {item.tech.map((t, index) => (
+                      <span 
+                        key={index} 
+                        className="px-3 py-1 text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-black/70 border border-black/20 rounded-full group-hover:text-white/80 group-hover:border-white/30 transition-colors duration-500"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Circular Arrow Button */}
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-black group-hover:border-[#D4AF37] flex items-center justify-center group-hover:bg-[#D4AF37] transition-all duration-500 shrink-0 self-start">
+                  <ArrowUpRight className="w-5 h-5 md:w-6 md:h-6 text-black group-hover:text-white group-hover:rotate-45 transition-transform duration-500" />
+                </div>
+
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
       </div>
     </section>
   );

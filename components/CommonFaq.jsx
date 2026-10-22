@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -37,17 +37,17 @@ const FAQ = () => {
   return (
     <section
       id="faq"
-      className="relative bg-white px-6 py-32 text-black md:px-[10%]"
+      className="relative w-full bg-[#FAFAFA] px-6 py-32 text-black md:px-[10%] overflow-hidden selection:bg-[#D4AF37] selection:text-white"
     >
-      <div className="mx-auto max-w-7xl grid grid-cols-1 gap-16 lg:grid-cols-12">
+      <div className="mx-auto w-full max-w-7xl flex flex-col lg:flex-row gap-16 lg:gap-24">
         
-        {/* LEFT SIDE - HEADING */}
-        <div className="lg:col-span-5 lg:sticky lg:top-32 lg:h-fit">
+        {/* LEFT SIDE - BRUTALIST HEADING */}
+        <div className="w-full lg:w-[40%] lg:sticky lg:top-32 lg:h-fit">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[11px] font-bold uppercase tracking-[0.4em] text-[#D4AF37]"
+            className="text-[10px] font-black uppercase tracking-[0.4em] text-[#D4AF37] mb-6"
           >
             Common Queries
           </motion.p>
@@ -56,9 +56,12 @@ const FAQ = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-4 text-4xl font-black tracking-tight text-gray-900 md:text-5xl lg:text-6xl"
+            className="text-5xl md:text-7xl font-black text-black tracking-tighter leading-[0.9] uppercase"
           >
-            Frequently Asked <span className="text-gray-400">Questions.</span>
+            The <br />
+            <span className="text-transparent" style={{ WebkitTextStroke: '2px black' }}>
+              Details.
+            </span>
           </motion.h2>
 
           <motion.p
@@ -66,57 +69,83 @@ const FAQ = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="mt-6 max-w-sm text-lg font-medium leading-relaxed text-gray-600"
+            className="mt-8 max-w-sm text-sm font-bold text-black/50 leading-relaxed uppercase tracking-widest border-l-2 border-[#D4AF37] pl-4"
           >
-            Everything you need to know about my services, tech stack, and how we can work together.
+            Everything you need to know about my workflow, tech stack, and how we collaborate.
           </motion.p>
         </div>
 
-        {/* RIGHT SIDE - ACCORDION */}
-        <div className="lg:col-span-7">
-          <div className="flex flex-col gap-4">
-            {faqs.map((faq, index) => (
+        {/* RIGHT SIDE - EDITORIAL ACCORDION */}
+        <div className="w-full lg:w-[60%] flex flex-col border-t-2 border-black">
+          {faqs.map((faq, index) => {
+            const isOpen = openIndex === index;
+            // Format number as 01, 02, etc.
+            const num = String(index + 1).padStart(2, '0');
+
+            return (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="border-b border-gray-200"
+                className="border-b-2 border-black overflow-hidden group"
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="flex w-full items-center justify-between py-6 text-left transition-colors hover:text-[#D4AF37]"
+                  className="flex w-full items-center justify-between py-8 text-left transition-colors duration-300"
                 >
-                  <h3 className={`text-lg font-black transition-colors md:text-xl ${openIndex === index ? "text-[#D4AF37]" : "text-gray-900"}`}>
-                    {faq.question}
-                  </h3>
+                  <div className="flex items-center gap-6 md:gap-10">
+                    {/* Brutalist Numbering */}
+                    <span className={`text-sm md:text-lg font-black transition-colors duration-300 ${isOpen ? 'text-[#D4AF37]' : 'text-black/30 group-hover:text-black'}`}>
+                      /{num}
+                    </span>
+                    
+                    {/* Question with Hover Indent Effect */}
+                    <h3 className={`text-xl md:text-3xl font-black tracking-tight uppercase transition-all duration-300 ${isOpen ? 'text-[#D4AF37] pl-2' : 'text-black group-hover:pl-2'}`}>
+                      {faq.question}
+                    </h3>
+                  </div>
                   
-                  {/* Plus / Minus Icon */}
-                  <span className="ml-6 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-gray-50 text-xl font-light">
-                    {openIndex === index ? "−" : "+"}
-                  </span>
+                  {/* Bespoke Animated Cross/Plus Icon */}
+                  <div className="relative w-6 h-6 shrink-0 ml-4 flex items-center justify-center">
+                    <motion.span 
+                      animate={{ rotate: isOpen ? 180 : 0, opacity: isOpen ? 0 : 1 }}
+                      transition={{ duration: 0.4, ease: "easeInOut" }}
+                      className="absolute w-full h-[2.5px] bg-black"
+                    />
+                    <motion.span 
+                      animate={{ rotate: isOpen ? 225 : 90, backgroundColor: isOpen ? '#D4AF37' : '#000' }}
+                      transition={{ duration: 0.4, ease: "easeInOut" }}
+                      className="absolute w-full h-[2.5px] bg-black"
+                    />
+                     <motion.span 
+                      animate={{ rotate: isOpen ? 135 : 90, opacity: isOpen ? 1 : 0, backgroundColor: isOpen ? '#D4AF37' : '#000' }}
+                      transition={{ duration: 0.4, ease: "easeInOut" }}
+                      className="absolute w-full h-[2.5px]"
+                    />
+                  </div>
                 </button>
 
                 {/* Animated Answer Body */}
                 <AnimatePresence>
-                  {openIndex === index && (
+                  {isOpen && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="overflow-hidden"
+                      transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
                     >
-                      <p className="pb-6 text-base font-medium leading-relaxed text-gray-600 pr-10">
+                      {/* Left padding matches the gap of the title to align text perfectly */}
+                      <p className="pb-10 pl-[52px] md:pl-[68px] text-base md:text-lg font-medium leading-relaxed text-black/70 pr-4 md:pr-12">
                         {faq.answer}
                       </p>
                     </motion.div>
                   )}
                 </AnimatePresence>
               </motion.div>
-            ))}
-          </div>
+            );
+          })}
         </div>
 
       </div>

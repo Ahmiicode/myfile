@@ -1,7 +1,8 @@
-"use client";
+'use client';
 
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, ArrowUpRight } from "lucide-react"; // Import Lucide icons
 
 const Navbar = () => {
   const [isScroll, setIsScroll] = useState(false);
@@ -12,7 +13,6 @@ const Navbar = () => {
     { name: "About", href: "#about" },
     { name: "Services", href: "#services" },
     { name: "Work", href: "#work" },
-    { name: "Contact", href: "#contact" },
   ];
 
   useEffect(() => {
@@ -23,118 +23,157 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Prevent scrolling when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isMenuOpen]);
+
   return (
     <>
-      {/* NAVBAR */}
+      {/* DESKTOP & MOBILE HEADER */}
       <motion.nav
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.7 }}
-        className={`fixed top-0 left-0 right-0 z-[100] flex justify-center px-6 transition-all duration-500 ${
-          isScroll ? "py-3" : "py-5"
+        transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
+          isScroll ? "py-2" : "py-6"
         }`}
       >
-        <div
-          className={`flex w-full max-w-7xl items-center justify-between transition-all duration-500 ${
-            isScroll
-              ? "bg-white/80 backdrop-blur-xl border-b border-gray-200 shadow-[0_10px_30px_rgba(0,0,0,0.03)] px-6 py-3"
-              : "bg-transparent px-2 py-2"
-          }`}
-        >
-          {/* LOGO - Minimal Editorial Style */}
-          <a
-            href="#top"
-            className="text-2xl font-black tracking-tighter text-black flex items-center gap-1"
+        <div className="mx-auto w-full max-w-7xl px-6 md:px-12">
+          <div
+            className={`flex w-full items-center justify-between transition-all duration-500 ${
+              isScroll
+                ? "bg-white/90 backdrop-blur-md border border-black/10 shadow-[0_4px_30px_rgba(0,0,0,0.05)] px-6 py-4 rounded-none"
+                : "bg-transparent py-2"
+            }`}
           >
-            Builds
-            <span className="text-[#D4AF37]">byahmad.</span>
-          </a>
-
-          {/* DESKTOP LINKS */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="group relative text-[11px] font-bold uppercase tracking-widest text-gray-500 transition-colors hover:text-black"
-              >
-                {item.name}
-                {/* Minimal Underline Animation */}
-                <span className="absolute -bottom-1.5 left-0 h-[1.5px] w-0 bg-black transition-all duration-300 group-hover:w-full" />
-              </a>
-            ))}
-          </div>
-
-          {/* RIGHT SIDE (CTA & Mobile Menu) */}
-          <div className="flex items-center gap-4">
-            
-            {/* CTA BUTTON - Sharp Agency Look */}
+            {/* LOGO - Editorial Style */}
             <a
-              href="#contact"
-              className="hidden md:flex items-center gap-2 border border-black bg-black px-6 py-2.5 text-xs font-bold uppercase tracking-widest text-white transition-all hover:bg-white hover:text-black hover:shadow-lg"
+              href="#top"
+              className="group flex items-center gap-1 z-[101]"
+              onClick={() => setIsMenuOpen(false)}
             >
-              Let's Talk
+              <div className="text-xl md:text-2xl font-black tracking-tighter text-black uppercase flex items-center">
+                Builds
+                <span className="text-transparent transition-colors duration-300 group-hover:text-[#D4AF37]" style={{ WebkitTextStroke: '1px black' }}>
+                  byahmad.
+                </span>
+              </div>
             </a>
 
-            {/* MOBILE MENU BUTTON (Hamburger) */}
-            <button
-              onClick={() => setIsMenuOpen(true)}
-              className="md:hidden flex h-10 w-10 items-center justify-center text-xl text-black border border-gray-200 bg-gray-50 active:bg-gray-200"
-            >
-              ☰
-            </button>
+            {/* DESKTOP LINKS */}
+            <div className="hidden md:flex items-center gap-10">
+              {navLinks.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="group relative text-[10px] font-bold uppercase tracking-[0.2em] text-black/60 transition-colors hover:text-black"
+                >
+                  {item.name}
+                  {/* Minimal Gold Underline on Hover */}
+                  <span className="absolute -bottom-2 left-0 h-[2px] w-0 bg-[#D4AF37] transition-all duration-300 group-hover:w-full" />
+                </a>
+              ))}
+            </div>
+
+            {/* RIGHT SIDE (CTA & Mobile Toggle) */}
+            <div className="flex items-center gap-6 z-[101]">
+              
+              {/* CTA BUTTON - Sharp Agency Look */}
+              <a
+                href="#contact"
+                onClick={() => setIsMenuOpen(false)}
+                className={`hidden md:flex items-center gap-2 border border-black px-6 py-3 text-[10px] font-bold uppercase tracking-widest transition-all duration-300 ${
+                  isMenuOpen ? "bg-white text-black" : "bg-black text-white hover:bg-[#D4AF37] hover:border-[#D4AF37] hover:text-black"
+                }`}
+              >
+                Let's Talk <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+
+              {/* MOBILE MENU BUTTON */}
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className={`md:hidden flex h-12 w-12 items-center justify-center border transition-colors duration-300 ${
+                  isMenuOpen ? "border-white/20 text-white" : "border-black bg-black text-white"
+                }`}
+                aria-label="Toggle Menu"
+              >
+                {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </button>
+            </div>
           </div>
         </div>
       </motion.nav>
 
-      {/* MOBILE MENU (BottomSheet Style) */}
+      {/* FULL-SCREEN BRUTALIST MOBILE MENU */}
       <AnimatePresence>
         {isMenuOpen && (
-          <>
-            {/* BACKDROP */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsMenuOpen(false)}
-              className="fixed inset-0 z-[100] bg-black/40 backdrop-blur-sm"
-            />
+          <motion.div
+            initial={{ opacity: 0, clipPath: "circle(0% at 100% 0)" }}
+            animate={{ opacity: 1, clipPath: "circle(150% at 100% 0)" }}
+            exit={{ opacity: 0, clipPath: "circle(0% at 100% 0)" }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-[90] flex flex-col justify-center bg-[#050505] px-6 py-24 md:hidden"
+          >
+            {/* Subtle Texture for Premium feel */}
+            <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none"></div>
 
-            {/* MOBILE SHEET - Clean White UI */}
-            <motion.div
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              exit={{ y: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed bottom-0 left-0 right-0 z-[101] rounded-t-3xl border-t border-gray-200 bg-white p-8 shadow-2xl"
-            >
-              {/* Swipe Handle */}
-              <div className="mx-auto mb-8 h-1.5 w-12 rounded-full bg-gray-200" />
-
-              {/* Mobile Links */}
-              <div className="flex flex-col gap-6 text-center">
-                {navLinks.map((item) => (
+            <div className="relative z-10 flex flex-col gap-6 mt-12">
+              <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.4em] mb-4">
+                Navigation
+              </span>
+              
+              {navLinks.map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -40 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
+                >
                   <a
-                    key={item.name}
                     href={item.href}
                     onClick={() => setIsMenuOpen(false)}
-                    className="text-xl font-black tracking-tight text-gray-500 transition-colors active:text-black"
+                    className="group text-5xl sm:text-6xl font-black tracking-tighter text-white uppercase flex items-center gap-4 transition-colors"
                   >
-                    {item.name}
+                    {/* Hover Outline Effect */}
+                    <span className="group-active:text-transparent group-active:stroke-text transition-all duration-300" style={{ WebkitTextStroke: '1px white' }}>
+                      {item.name}
+                    </span>
                   </a>
-                ))}
-              </div>
+                </motion.div>
+              ))}
 
-              {/* Mobile CTA */}
-              <a
-                href="#contact"
-                onClick={() => setIsMenuOpen(false)}
-                className="mt-10 flex w-full justify-center bg-black py-4 text-sm font-bold uppercase tracking-widest text-white transition-colors active:bg-gray-800"
+              <motion.div
+                initial={{ opacity: 0, x: -40 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.6 }}
+                className="mt-12"
               >
-                Let's Talk
-              </a>
-            </motion.div>
-          </>
+                <a
+                  href="#contact"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="inline-flex items-center gap-3 border border-[#D4AF37] text-[#D4AF37] px-8 py-5 font-bold uppercase tracking-widest text-[11px] hover:bg-[#D4AF37] hover:text-black transition-colors duration-300"
+                >
+                  Start a Project <ArrowUpRight className="w-4 h-4" />
+                </a>
+              </motion.div>
+              
+              {/* Contact Info Footer inside Menu */}
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8 }}
+                className="mt-16 border-t border-white/10 pt-8"
+              >
+                <p className="text-[9px] font-bold text-white/30 uppercase tracking-[0.3em] mb-2">Direct Line</p>
+                <a href="mailto:hello@buildsbyahmad.com" className="text-white text-sm hover:text-[#D4AF37] transition-colors">hello@buildsbyahmad.com</a>
+              </motion.div>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </>

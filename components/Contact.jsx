@@ -1,8 +1,6 @@
-"use client";
+'use client';
 
 import React, { useState } from "react";
-import Image from "next/image";
-import { assets } from "@/assets/assets";
 import { motion } from "framer-motion";
 
 const Contact = () => {
@@ -18,7 +16,7 @@ const Contact = () => {
     const message = formData.get("message");
 
     if (contactMethod === "whatsapp") {
-      const phoneNumber = "923273217355"; 
+      const phoneNumber = "923111666123"; 
       const text = `Hi Ahmad, I am ${name}.%0A%0AEmail: ${email}%0A%0AProject Details:%0A${message}`;
       const whatsappUrl = `https://wa.me/${phoneNumber}?text=${text}`;
       

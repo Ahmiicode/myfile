@@ -78,65 +78,131 @@ export const assets = {
 
 export const workData = [
   {
-  title: 'Dental Doctor Full Stack Website ',
-  description: 'A sleek real estate booking website designed for showcasing properties, with intuitive navigation, filtering, and modern UI components.',
-  bgImage: '/work-9.png',
-  liveSite: 'https://www.hafeezdentalcare.com/',
-},
- {
-  title: 'Madicate Frontend project',
-  description: 'Healthcare landing page for a modern medical tech brand, built with responsive design and sleek UI components.',
-  bgImage: '/work-1.png',
-  liveSite: 'https://medicate-pearl.vercel.app/',
-}
-,
+    title: 'Dental Doctor Full Stack Website',
+    description: 'A sleek real estate booking website designed for showcasing properties, with intuitive navigation, filtering, and modern UI components.',
+    bgImage: '/work-9.png',
+    liveSite: 'https://www.hafeezdentalcare.com/',
+    category: 'Next.js',
+  },
   {
-  title: 'Astroship — Location-Based React App',
-  description: 'Multi-page React application delivering geo-targeted features with responsive design and seamless navigation.',
-  bgImage: '/work-2.png',
-  liveSite: 'https://astroship-beta-gilt.vercel.app/',
-}
-,
-{
-  title: 'Grill Yard — Restaurant Website',
-  description: 'A modern, visually appetizing website for a grill restaurant, featuring an interactive menu, responsive layout, and smooth navigation.',
-  bgImage: '/work-3.png',
-  liveSite: 'https://grill-yard.vercel.app/',
-}
-,
-{
-  title: 'Forever — E-commerce UI/UX Design',
-  description: 'A stylish e-commerce interface focused on user experience, showcasing modern UI design for seamless product browsing and checkout.',
-  bgImage: '/work-4.png',
-  liveSite: 'https://inspiring-churros-ab3001.netlify.app/',
-}
-,
- {
-  title: 'WP-Plumb — Plumbing Services Website',
-  description: 'Multi-page website for a plumbing business, featuring service listings, contact forms, and a clean, professional layout.',
-  bgImage: '/work-5.png',
-  liveSite: 'https://bucolic-kelpie-66b35c.netlify.app/',
-}
-,
-{
-  title: 'RealEstateHub — Property Booking Platform',
-  description: 'A sleek real estate booking website designed for showcasing properties, with intuitive navigation, filtering, and modern UI components.',
-  bgImage: '/work-6.png',
-  liveSite: 'https://zesty-madeleine-367342.netlify.app/',
-},
-{
-  title: 'Salad — Modern Real Estate Platform',
-  description: 'A fresh, minimalist real estate platform designed for effortless property discovery and booking. Built with a clean UI, smooth navigation, and responsive design to deliver a seamless user experience.',
-  bgImage: '/work-7.png',
-  liveSite: 'https://salaaddd.vercel.app/',
-},
-{
-  title: 'RealEstateHub — Property Booking Platform',
-  description: 'A sleek real estate booking website designed for showcasing properties, with intuitive navigation, filtering, and modern UI components.',
-  bgImage: '/work-8.png',
-  liveSite: 'https://estate-qkvg.vercel.app/',
-},
-
+    title: 'Madicate Frontend project',
+    description: 'Healthcare landing page for a modern medical tech brand, built with responsive design and sleek UI components.',
+    bgImage: '/work-1.png',
+    liveSite: 'https://medicate-pearl.vercel.app/',
+    category: 'Frontend',
+  },
+  {
+    title: 'Astroship — Location-Based React App',
+    description: 'Multi-page React application delivering geo-targeted features with responsive design and seamless navigation.',
+    bgImage: '/work-2.png',
+    liveSite: 'https://astroship-beta-gilt.vercel.app/',
+    category: 'React',
+  },
+  {
+    title: 'Grill Yard — Restaurant Website',
+    description: 'A modern, visually appetizing website for a grill restaurant, featuring an interactive menu, responsive layout, and smooth navigation.',
+    bgImage: '/work-3.png',
+    liveSite: 'https://grill-yard.vercel.app/',
+    category: 'WordPress',
+  },
+  {
+    title: 'Forever — E-commerce UI/UX Design',
+    description: 'A stylish e-commerce interface focused on user experience, showcasing modern UI design for seamless product browsing and checkout.',
+    bgImage: '/work-4.png',
+    liveSite: 'https://inspiring-churros-ab3001.netlify.app/',
+    category: 'Frontend',
+  },
+  {
+    title: 'WP-Plumb — Plumbing Services Website',
+    description: 'Multi-page website for a plumbing business, featuring service listings, contact forms, and a clean, professional layout.',
+    bgImage: '/work-5.png',
+    liveSite: 'https://bucolic-kelpie-66b35c.netlify.app/',
+    category: 'WordPress',
+  },
+  {
+    title: 'RealEstateHub — Property Booking Platform',
+    description: 'A sleek real estate booking website designed for showcasing properties, with intuitive navigation, filtering, and modern UI components.',
+    bgImage: '/work-6.png',
+    liveSite: 'https://zesty-madeleine-367342.netlify.app/',
+    category: 'React',
+  },
+  {
+    title: 'Salad — Modern Real Estate Platform',
+    description: 'A fresh, minimalist real estate platform designed for effortless property discovery and booking. Built with a clean UI, smooth navigation, and responsive design to deliver a seamless user experience.',
+    bgImage: '/work-7.png',
+    liveSite: 'https://salaaddd.vercel.app/',
+    category: 'Next.js',
+  },
+  {
+    title: 'RealEstateHub — Property Booking Platform',
+    description: 'A sleek real estate booking website designed for showcasing properties, with intuitive navigation, filtering, and modern UI components.',
+    bgImage: '/work-8.png',
+    liveSite: 'https://estate-qkvg.vercel.app/',
+    category: 'Full Stack',
+  },
+  {
+    title: 'Webflow Modern App',
+    description: 'A highly responsive web application featuring clean UI/UX design and modern web development practices.',
+    bgImage: '/work-12.png',
+    liveSite: 'https://webflow-13ee.vercel.app/',
+    category: 'WordPress',
+  },
+  {
+    title: 'Nevora Labs',
+    description: 'A professional frontend website built for seamless user experience with intuitive layout and components.',
+    bgImage: '/work-14.png',
+    liveSite: 'https://nevoralabs.vercel.app/',
+    category: 'Next.js',
+  },
+  {
+    title: 'Carflow Frontend',
+    description: 'An interactive frontend platform showcasing dynamic styling, smooth navigation, and modern architecture.',
+    bgImage: '/work-13.png',
+    liveSite: 'https://carflow-kappa.vercel.app/',
+    category: 'React',
+  },
+  {
+    title: 'Dressica E-commerce',
+    description: 'A stylish online clothing store featuring a modern layout, smooth navigation, and optimized checkout flow.',
+    bgImage: '/work-19.png',
+    liveSite: 'https://dressica.pk/',
+    category: 'Shopify',
+  },
+  {
+    title: 'American Fusion Store',
+    description: 'A responsive e-commerce platform built for a seamless shopping experience with dynamic product displays.',
+    bgImage: '/work-18.png',
+    liveSite: 'https://americanfusionstore.com',
+    category: 'Shopify',
+  },
+  {
+    title: 'Natuvexa Wellness',
+    description: 'A health and wellness brand store designed with a clean, user-friendly interface and fast loading speeds.',
+    bgImage: '/work-20.png',
+    liveSite: 'https://natuvexa.com',
+    category: 'WordPress',
+  },
+  {
+    title: 'Portray PK',
+    description: 'A modern retail website featuring high-quality product galleries, easy filtering, and a secure checkout process.',
+    bgImage: '/work-21.png',
+    liveSite: 'https://portray.pk/',
+    category: 'Shopify',
+  },
+  {
+    title: 'Saawarna Store',
+    description: 'An elegant e-commerce boutique with a focus on visual storytelling and seamless user interaction.',
+    bgImage: '/work-17.png',
+    liveSite: 'https://www.saawarna.store/',
+    category: 'Shopify',
+  },
+  {
+    title: 'Creative Kit',
+    description: 'An engaging online store for creative tools, built with custom layouts and optimized for mobile shoppers.',
+    bgImage: '/work-16.png',
+    liveSite: 'https://creativekit.pk/',
+    category: 'WordPress',
+  }
 ];
 
 export const serviceData = [
