@@ -17,8 +17,8 @@ export const metadata = {
   description: "Independent full-stack developer in Pakistan specializing in Next.js, MERN stack, Shopify, and WordPress. I build high-converting web applications.",
   keywords: ["Next.js developer", "MERN stack freelancer", "Shopify expert", "Web developer in Pakistan"],
   icons: {
-    icon: "/favicon-52x52.png",
-    shortcut: "/favicon-55x55.png",
+    icon: "/icon.png",
+    shortcut: "/icon.png",
     apple: "/apple-touch-icon.png",
   },
 };
