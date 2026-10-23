@@ -16,6 +16,10 @@ export const metadata = {
   title: "Builds by Ahmad | Next.js & MERN Stack Developer",
   description: "Independent full-stack developer in Pakistan specializing in Next.js, MERN stack, Shopify, and WordPress. I build high-converting web applications.",
   keywords: ["Next.js developer", "MERN stack freelancer", "Shopify expert", "Web developer in Pakistan"],
+  metadataBase: new URL('https://www.buildsbyahmad.online'),
+  verification: {
+    google: "TQEuVEvMlw2cxImgtF_ePMd8Y_KsExTgVIpvDiHwNTY",
+  },
   icons: {
     icon: "/icon.png",
     shortcut: "/icon.png",
